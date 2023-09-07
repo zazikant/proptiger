@@ -6,7 +6,7 @@ from scrapy.selector import Selector
 import json
 from urllib.parse import urlencode
 
-class json_xhr_scrapSpider(scrapy.Spider):
+class Json_xhr_scrapSpider(scrapy.Spider):
     name = "json_xhr_scrap"
     allowed_domains = ["thebluebook.com"]
 
