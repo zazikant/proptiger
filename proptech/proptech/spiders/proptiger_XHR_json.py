@@ -6,7 +6,7 @@ import re
 def is_possession_date_valid(date_str):
     """
     Checks if the possession date is from the year 2025 onwards.
-    It uses regex to find a two-digit year (e.g., '25, '28) and checks if the value is >= 25.
+    It uses regex to find a two-digit year (e.g., '25, '28) and handles the century.
     """
     if not date_str:
         return False
@@ -15,7 +15,14 @@ def is_possession_date_valid(date_str):
     if match:
         year_str = match.group(1)
         year = int(year_str)
-        return year >= 25
+        
+        # Handle century: years 00-68 are 20xx, 69-99 are 19xx
+        if 0 <= year <= 68:
+            full_year = 2000 + year
+        else:
+            full_year = 1900 + year
+            
+        return full_year >= 2025
     
     return False
 
