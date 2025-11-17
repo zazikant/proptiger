@@ -9,3 +9,6 @@
 
 
 Filter out mechanism: (Apply Regex hack to match content as per XHR response) 
+
+
+Ensure to run spider and make it save output to output.jl
