@@ -29,6 +29,7 @@ def is_possession_date_valid(date_str):
 class PropTigerAllBuildersSpider(scrapy.Spider):
     name = "prop_tiger_all_builders"
     allowed_domains = ["proptiger.com"]
+    builder_urls_seen = set()
     
     def start_requests(self):
         cities = ["mumbai"]
@@ -47,7 +48,9 @@ class PropTigerAllBuildersSpider(scrapy.Spider):
 
         for link in developer_links:
             developer_url = response.urljoin(link)
-            yield scrapy.Request(url=developer_url, callback=self.parse_developer_page)
+            if developer_url not in self.builder_urls_seen:
+                self.builder_urls_seen.add(developer_url)
+                yield scrapy.Request(url=developer_url, callback=self.parse_developer_page)
 
         # Handle pagination
         city = response.meta['city']
