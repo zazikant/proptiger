@@ -8,7 +8,9 @@
   ### you need to make css selector of listing and handle pagination (try to hack into url path for pages)
 
 
-Filter out mechanism: (Apply Regex hack to match content as per XHR response) 
+Filter out mechanism: 
+1. (Apply Regex hack to match content as per XHR response)
+2. Also the urls of main listing should have de duplication logic sent scrapy engine  
 
 
 Ensure to run spider and make it save output to output.jl
